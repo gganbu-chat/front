@@ -8,6 +8,7 @@ import './CharacterManager.css';
 
 const CharacterManager = ({ setCurrentView }) => {
   const [userIdx, setUserIdx] = useState(null);
+
   // 탭 상태 관리
   const [activeTab, setActiveTab] = useState('profile');
 
@@ -119,9 +120,9 @@ const CharacterManager = ({ setCurrentView }) => {
     const verifyToken = async () => {
       try {
         const token = localStorage.getItem('authToken');
-        console.log('token: ', token);
         if (!token) {
-          console.error('No token found');
+          toast.warning("로그인이 필요한 서비스입니다.");
+          navigate('/signin');
           return;
         }
 
@@ -134,18 +135,23 @@ const CharacterManager = ({ setCurrentView }) => {
             withCredentials: true,
           }
         );
-        console.log('response: ', response);
 
         if (response.data && response.data.user_idx) {
           setUserIdx(response.data.user_idx);
+        } else {
+          toast.warning('인증 정보가 유효하지 않습니다.');
+          navigate('/signin');
         }
       } catch (error) {
         console.error('Token verification failed:', error);
+        toast.error('세션이 만료되었습니다.');
+        navigate('/signin');
       }
     };
 
     verifyToken();
-  }, []);
+  }, [navigate]);
+  
 
   const fetchFields = async () => {
     try {
@@ -354,7 +360,7 @@ const CharacterManager = ({ setCurrentView }) => {
     const characterData = {
       character_owner: userIdx,
       field_idx: parseInt(characterField, 10),
-      voice_idx: '38f942a9-b2c4-4c0f-aa86-ce0c13df787d',
+      // voice_idx: '38f942a9-b2c4-4c0f-aa86-ce0c13df787d',
       char_name: characterName,
       char_description: characterDescription,
       character_appearance: characterAppearance,

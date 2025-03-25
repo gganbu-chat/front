@@ -14,7 +14,7 @@ const CharacterModal = ({ character, onClose }) => {
   const [followerCount, setFollowerCount] = useState(0);
   const user_idx = getUserIdxFromToken(); // 로그인한 사용자값으로 설정
 
-  console.log('캐릭터 데이터:', character);
+  // console.log('캐릭터 데이터:', character);
 
   useEffect(() => {
     const checkFollowStatus = async () => {

@@ -1,0 +1,4 @@
+# 도메인 설정
+REACT_APP_SERVER_DOMAIN=http://localhost:8000
+REACT_APP_LANGCHAIN_SERVER_DOMAIN=http://localhost:8001
+REACT_APP_WS_SERVER_DOMAIN=ws://localhost:8001

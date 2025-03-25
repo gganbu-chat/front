@@ -282,8 +282,8 @@ const ChatRoom = ({ roomId, roomName, roomImg, onLeaveRoom }) => {
                     </div>
                     {!isUser && (
                       <FiVolume2
-                        className="sound-icon"
-                        onClick={() => playTTS(msg.content)}
+                        className="sound-icon cursor-pointer"
+                        // onClick={() => playTTS(msg.content)}
                         title="TTS 재생"
                       />
                     )}
