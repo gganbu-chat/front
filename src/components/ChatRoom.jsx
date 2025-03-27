@@ -192,34 +192,34 @@ const ChatRoom = ({ roomId, roomName, roomImg, onLeaveRoom }) => {
     }
   };
 
-  const playTTS = async (text) => {
-    if (!roomInfo) return;
+  // const playTTS = async (text) => {
+  //   if (!roomInfo) return;
 
-    try {
-      // TTS API 호출
-      const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_DOMAIN}/generate-tts/`,
-        {
-          text: text,
-          speaker: roomInfo.voice_speaker,
-          language: 'KO', // 언어 고정
-          speed: 1.0, // 속도 설정 (roomInfo에서 가져오거나 고정값)
-        },
-        {
-          responseType: 'arraybuffer',
-        }
-      );
+  //   try {
+  //     // TTS API 호출
+  //     const response = await axios.post(
+  //       `${process.env.REACT_APP_SERVER_DOMAIN}/generate-tts/`,
+  //       {
+  //         text: text,
+  //         speaker: roomInfo.voice_speaker,
+  //         language: 'KO', // 언어 고정
+  //         speed: 1.0, // 속도 설정 (roomInfo에서 가져오거나 고정값)
+  //       },
+  //       {
+  //         responseType: 'arraybuffer',
+  //       }
+  //     );
 
-      // 반환된 데이터로 오디오 재생
-      const audioBlob = new Blob([response.data], { type: 'audio/wav' });
-      const audioUrl = URL.createObjectURL(audioBlob);
-      const audio = new Audio(audioUrl);
-      audio.play();
-    } catch (error) {
-      console.error('TTS 호출 오류:', error.response?.data || error.message);
-      alert('TTS 요청 중 오류가 발생했습니다.');
-    }
-  };
+  //     // 반환된 데이터로 오디오 재생
+  //     const audioBlob = new Blob([response.data], { type: 'audio/wav' });
+  //     const audioUrl = URL.createObjectURL(audioBlob);
+  //     const audio = new Audio(audioUrl);
+  //     audio.play();
+  //   } catch (error) {
+  //     console.error('TTS 호출 오류:', error.response?.data || error.message);
+  //     alert('TTS 요청 중 오류가 발생했습니다.');
+  //   }
+  // };
 
   useEffect(() => {
     scrollToBottom();

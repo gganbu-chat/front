@@ -11,20 +11,20 @@ import {
   FILTER_PROMPTS,
   BASE_PROMPT,
   EXCLUDED_PROMPT,
-} from '../../promts/ImagePrompts';
+} from '../promts/ImagePrompts';
 
 const ImageCreate = () => {
   // 상태 관리=====
-  const [basePrompt] = useState(BASE_PROMPT); // 기본 프롬프트
+  // const [basePrompt] = useState(BASE_PROMPT); // 기본 프롬프트
   const [excludedPrompt] = useState(EXCLUDED_PROMPT); // 제외된 프롬프트
-  const [customPrompt, setCustomPrompt] = useState(''); // 사용자 정의 프롬프트
 
+  const [customPrompt, setCustomPrompt] = useState(''); // 사용자 정의 프롬프트
   const [stylePrompt, setStylePrompt] = useState(''); // 그림체
   const [backgroundPrompt, setBackgroundPrompt] = useState(''); // 배경
   const [filterPrompt, setFilterPrompt] = useState(''); // 필터 스타일
   const [generatedImage, setGeneratedImage] = useState(null); // 생성된 이미지
   const [loading, setLoading] = useState(false); // 로딩 상태
-  const navigate = useNavigate(); // 뒤오가기 버튼
+  const navigate = useNavigate(); // 뒤로가기 버튼
 
   // 배경 실내/실외 선택 처리 값
   const [indoorSelected, setIndoorSelected] = useState(''); // 실내 선택된 값
@@ -45,9 +45,9 @@ const ImageCreate = () => {
   // ======= 옵션 변경 함수 =======
   const handleOptionChange = (category, option) => {
     const promptData = {
-      style: STYLE_PROMPTS,
-      background: BACKGROUND_PROMPTS,
-      filter: FILTER_PROMPTS,
+      // style: STYLE_PROMPTS,
+      // background: BACKGROUND_PROMPTS,
+      // filter: FILTER_PROMPTS,
     };
 
     // 이전 선택 항목이 있을 경우 초기화
@@ -84,7 +84,7 @@ const ImageCreate = () => {
   // ======= 전체 프롬프트 생성 함수 =======
   const getFullPrompt = () => {
     const prompts = [
-      basePrompt,
+      // basePrompt,
       stylePrompt,
       backgroundPrompt,
       filterPrompt,
@@ -112,7 +112,7 @@ const ImageCreate = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_DOMAIN}/generate-image/`,
+        `${process.env.REACT_APP_SERVER_DOMAIN}/generate-stable-img`,
         {
           prompt: fullPrompt,
           negative_prompt: excludedPrompt,
@@ -369,7 +369,7 @@ const ImageCreate = () => {
             disabled={loading}
             style={{ marginTop: '10px' }}
           >
-            {loading ? '생성 중...' : '이미지 생성'}
+            {loading ? '생성 중...(5분 정도 소요)' : '이미지 생성'}
           </button>
 
           <div className="create-finished-area">

@@ -17,7 +17,7 @@ import Upperbar from './components/common/Upperbar';
 
 import CharacterManager from './components/CharacterManager';
 import ChatPage from './components/ChatPage';
-import ImageCreate from './components/image_create/ImageCreate';
+import ImageCreate from './components/ImageCreate';
 import TTSPage from './components/TTSPage';
 
 import './App.css';
