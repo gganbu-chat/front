@@ -74,6 +74,7 @@
 
 .c-dic {
   color: var(--white-30);
+  font-size: 0.8rem;
 }
 
 /* Prompt Textarea */

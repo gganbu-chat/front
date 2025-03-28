@@ -125,7 +125,7 @@ const Section = () => {
       try {
         const [charactersResponse, tagsResponse, fieldsResponse] =
           await Promise.all([
-            axios.get(`${process.env.REACT_APP_SERVER_DOMAIN}/api/characters/`),
+            axios.get(`${process.env.REACT_APP_SERVER_DOMAIN}/api/characters`),
             axios.get(`${process.env.REACT_APP_SERVER_DOMAIN}/api/tags`),
             axios.get(`${process.env.REACT_APP_SERVER_DOMAIN}/api/fields`),
           ]);
